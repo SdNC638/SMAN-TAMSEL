@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SMAN 1 Tambun Selatan - Multifungsi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e5a8a;
+            --secondary: #f8b334;
+            --accent: #2c8c47;
+            --light: #f5f7fa;
+            --dark: #2d3748;
+            --gray: #718096;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--primary) 0%, #2c3e50 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .logo i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .school-name h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        
+        .school-name p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+        
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .chat-container {
+            flex: 3;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+        
+        .chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        
+        .chat-history {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+            line-height: 1.7;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ai-message {
+            align-self: flex-start;
+            background: #edf2f7;
+            border-bottom-left-radius: 5px;
+            color: var(--dark);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .chat-input input:focus {
+            border-color: var(--primary);
+        }
+        
+        .chat-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chat-input button:hover {
+            background: #164a73;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-panel {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-header {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .info-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .info-header p {
+            color: var(--gray);
+        }
+        
+        .capabilities {
+            background: #f0f9ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        
+        .capabilities h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .capabilities ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .capabilities li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .capabilities li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .school-info {
+            flex: 1;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-text h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .info-text p {
+            color: var(--gray);
+            font-size: 15px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            font-size: 16px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--dark);
+            color: white;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .logo-container {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .chat-input button {
+                padding: 15px 20px;
+            }
+        }
+        
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background: #edf2f7;
+            padding: 15px 20px;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .typing-indicator span {
+            height: 10px;
+            width: 10px;
+            float: left;
+            margin: 0 2px;
+            background-color: var(--gray);
+            display: block;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        
+        .typing-indicator span:nth-of-type(1) {
+            animation: typing 1s infinite;
+        }
+        
+        .typing-indicator span:nth-of-type(2) {
+            animation: typing 1s infinite 0.2s;
+        }
+        
+        .typing-indicator span:nth-of-type(3) {
+            animation: typing 1s infinite 0.4s;
+        }
+        
+        @keyframes typing {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            background: rgba(30, 90, 138, 0.1);
+            border: 1px solid rgba(30, 90, 138, 0.3);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .action-button:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .ai-identity {
+            display: inline-block;
+            background: rgba(44, 140, 71, 0.1);
+            color: var(--accent);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="school-name">
+                    <h1>SMAN 1 TAMBUN SELATAN</h1>
+                    <p>Asisten AI Multifungsi</p>
+                </div>
+            </div>
+            <div class="header-content">
+                <h2>Asisten Virtual Cerdas SMAN 1 Tambun Selatan</h2>
+                <p class="tagline">Jawab semua pertanyaan Anda: akademik, pendidikan, teknologi, kehidupan sehari-hari, dan banyak lagi!</p>
+            </div>
+        </header>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Pengetahuan Luas</h3>
+                <p>Bertanya apapun mulai dari pelajaran sekolah, teknologi terkini, tips belajar, hingga pengetahuan umum</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Pendamping Akademik</h3>
+                <p>Bantu kerjakan tugas sekolah, jelaskan materi pelajaran, dan persiapan ujian untuk semua mata pelajaran</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Kreatif & Inovatif</h3>
+                <p>Bantu menulis esai, membuat puisi, menyelesaikan masalah logika, dan mengembangkan ide proyek</p>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i> Asisten Virtual Multifungsi
+                </div>
+                <div class="chat-history" id="chatHistory">
+                    <div class="message ai-message">
+                        <strong>Halo! Saya asisten virtual SMAN 1 Tambun Selatan.</strong> 😊<br><br>
+                        Saya bisa membantu Anda dengan berbagai topik:<br>
+                        • Penjelasan materi pelajaran<br>
+                        • Bantuan mengerjakan tugas<br>
+                        • Informasi sekolah<br>
+                        • Pengetahuan umum<br>
+                        • Tips belajar efektif<br>
+                        • Ide kreatif dan proyek<br>
+                        • Dan banyak lagi!<br><br>
+                        
+                        <div class="ai-identity">Dipersembahkan oleh SMAN 1 Tambun Selatan</div>
+                    </div>
+                </div>
+                <div class="typing-indicator" id="typingIndicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Tanyakan apapun kepada AI...">
+                    <button id="sendButton">
+                        <i class="fas fa-paper-plane"></i> Kirim
+                    </button>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <div class="info-header">
+                    <h2>Kemampuan Asisten AI</h2>
+                    <p>Dapat menjawab berbagai jenis pertanyaan</p>
+                </div>
+                <div class="capabilities">
+                    <h3><i class="fas fa-check-circle"></i> Topik yang Dapat Dibahas:</h3>
+                    <ul>
+                        <li>Semua mata pelajaran sekolah (Matematika, Fisika, Bahasa, dll)</li>
+                        <li>Penjelasan konsep ilmiah dan teknologi</li>
+                        <li>Bantuan mengerjakan tugas dan pekerjaan rumah</li>
+                        <li>Pengetahuan umum dan informasi terkini</li>
+                        <li>Tips belajar efektif dan manajemen waktu</li>
+                        <li>Konsultasi karir dan pendidikan</li>
+                        <li>Penulisan kreatif (puisi, cerpen, esai)</li>
+                        <li>Pemecahan masalah logika dan analitis</li>
+                        <li>Informasi seputar SMAN 1 Tambun Selatan</li>
+                    </ul>
+                </div>
+                
+                <div class="action-buttons">
+                    <div class="action-button" onclick="askQuestion('Bagaimana cara belajar efektif untuk ujian?')">Tips Belajar</div>
+                    <div class="action-button" onclick="askQuestion('Jelaskan teori relativitas Einstein')">Pengetahuan</div>
+                    <div class="action-button" onclick="askQuestion('Bantu saya membuat puisi tentang pendidikan')">Kreativitas</div>
+                    <div class="action-button" onclick="askQuestion('Apa saja ekstrakurikuler di SMAN 1 Tambun Selatan?')">Info Sekolah</div>
+                </div>
+                
+                <div class="school-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Alamat Sekolah</h3>
+                            <p>Jl. Pendidikan No. 123, Tambun Selatan, Bekasi, Jawa Barat 17510</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Kontak Resmi</h3>
+                            <p>(021) 8901234 | info@sman1tambunselatan.sch.id</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 SMAN 1 Tambun Selatan. Asisten AI Multifungsi.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(021) 8901234</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@sman1tambunselatan</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-youtube"></i>
+                    <span>SMAN 1 Tambun Selatan Official</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatHistory = document.getElementById('chatHistory');
+            const userInput = document.getElementById('userInput');
+            const sendButton = document.getElementById('sendButton');
+            const typingIndicator = document.getElementById('typingIndicator');
+            
+            // Fungsi untuk menambahkan pesan ke chat
+            function addMessage(role, content) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(role === 'user' ? 'user-message' : 'ai-message');
+                
+                // Tambahkan identitas khusus untuk pesan AI
+                if(role === 'ai') {
+                    messageDiv.innerHTML = content + 
+                        `<div class="ai-identity">Dipersembahkan oleh SMAN 1 Tambun Selatan</div>`;
+                } else {
+                    messageDiv.textContent = content;
+                }
+                
+                chatHistory.appendChild(messageDiv);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+            
+            // Fungsi untuk menampilkan indikator mengetik
+            function showTyping() {
+                typingIndicator.style.display = 'block';
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+            
+            // Fungsi untuk menyembunyikan indikator mengetik
+            function hideTyping() {
+                typingIndicator.style.display = 'none';
+            }
+            
+            // Fungsi untuk mengirim pesan ke AI
+            async function sendMessage() {
+                const message = userInput.value.trim();
+                if (!message) return;
+                
+                // Tambahkan pesan pengguna
+                addMessage('user', message);
+                userInput.value = '';
+                
+                // Tampilkan indikator mengetik
+                showTyping();
+                
+                try {
+                    // Kirim permintaan ke API OpenRouter
+                    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Bearer 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",
+                            "HTTP-Referer": "https://sman1tambunselatan.sch.id",
+                            "X-Title": "SMAN 1 Tambun Selatan",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            "model": "deepseek/deepseek-chat-v3-0324:free",
+                            "messages": [
+                                {
+                                    "role": "system",
+                                    "content": "Anda adalah AI resmi SMAN 1 Tambun Selatan Bekasi yang multifungsi. Anda dapat menjawab berbagai jenis pertanyaan mulai dari akademik, pengetahuan umum, teknologi, hingga kehidupan sehari-hari. Untuk pertanyaan tentang sekolah, berikan informasi akurat. Untuk topik lain, jawablah sebagai asisten yang ramah dan berpengetahuan luas. Pada akhir jawaban, sisipkan identitas sebagai AI SMAN 1 Tambun Selatan dengan kreatif."
+                                },
+                                {
+                                    "role": "user",
+                                    "content": message
+                                }
+                            ],
+                            "temperature": 0.7,
+                            "max_tokens": 800
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    const aiResponse = data.choices[0].message.content;
+                    
+                    // Sembunyikan indikator mengetik dan tambahkan respon AI
+                    hideTyping();
+                    addMessage('ai', aiResponse);
+                } catch (error) {
+                    hideTyping();
+                    addMessage('ai', 'Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi kami langsung di (021) 8901234');
+                    console.error('Error:', error);
+                }
+            }
+            
+            // Fungsi untuk mengajukan pertanyaan contoh
+            window.askQuestion = function(question) {
+                userInput.value = question;
+                sendMessage();
+            };
+            
+            // Event listener untuk tombol kirim
+            sendButton.addEventListener('click', sendMessage);
+            
+            // Event listener untuk tombol Enter
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Contoh pertanyaan yang bisa diajukan
+            const sampleQuestions = [
+                "Bagaimana cara kerja mesin pencari seperti Google?",
+                "Jelaskan konsep fotosintesis dalam biologi",
+                "Bantu saya membuat jadwal belajar untuk UTBK",
+                "Apa saja prestasi SMAN 1 Tambun Selatan tahun ini?",
+                "Bisakah kamu membantu saya menyelesaikan soal matematika ini?",
+                "Ceritakan perkembangan teknologi AI dalam pendidikan"
+            ];
+            
+            // Tambahkan contoh pertanyaan ke input sebagai placeholder bergantian
+            let currentQuestionIndex = 0;
+            function rotatePlaceholder() {
+                userInput.placeholder = `Contoh: "${sampleQuestions[currentQuestionIndex]}"`;
+                currentQuestionIndex = (currentQuestionIndex + 1) % sampleQuestions.length;
+            }
+            
+            // Rotate placeholder setiap 5 detik
+            rotatePlaceholder();
+            setInterval(rotatePlaceholder, 5000);
+        });
+    </script>
+</body>
+</html>
